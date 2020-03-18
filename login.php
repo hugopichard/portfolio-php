@@ -6,11 +6,11 @@ include_once("php/code.php");
 $user = new Users;
 if(isset($_SESSION["account"]["id"]))
 {
-    header('Location: /');
+    header('Location: admin.php');
 }
 if(isset($_POST["submit"]))
 {
-    if($_POST["submit"] === "Connection")
+    if($_POST["submit"] === "OK")
 {
     if($_POST['uname'] != NULL && $_POST['psw'] != NULL)
     {
@@ -27,7 +27,6 @@ if(isset($_POST["submit"]))
     <head>
         <meta charset="utf-8">
         <title>Hugo Pichard - login</title>
-        
         <link rel="stylesheet" href="login.css">
     </head>
 
@@ -41,14 +40,15 @@ if(isset($_POST["submit"]))
             <div class="rectangle1">
                 <div class="admin">ADMIN</div>
                 <form action="login.php" method="post">
-                    <div class="identifiantdiv">
-                        <input type="text" name="uname" class="identifiant" placeholder="Identifiant" required>
-                    </div>
-                    <div class="motDePassediv">
-                        <input type="password" name="psw" class="motDePasse" placeholder="Mot de passe" required>
-                    </div>
-                    <div class="connectiondiv">
-                        <input type="submit" value="Connection" class="connection">
+
+                    <div class="container">
+                        <label for="uname"></label>
+                        <input type="text" placeholder="Identifiant" class="identifiant" name="uname" required>
+
+                        <label for="psw"></label>
+                        <input type="password" placeholder="Mot de passe" class="motDePasse" name="psw" required>
+
+                        <button type="submit" name="submit" class="connection" value="OK">Connection</button>
                     </div>
                 </form>
             </div>
@@ -60,4 +60,3 @@ if(isset($_POST["submit"]))
     
     </body>
     </html>
-            

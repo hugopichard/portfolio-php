@@ -29,7 +29,7 @@ class Users {
                 'username' => $user["username"]
             ];
 
-            header('Location: /');
+            header('Location: admin.php');
         }
         else
         {
@@ -39,11 +39,44 @@ class Users {
 }
 
 class Works {
-    function get_works()
+    function get_videoworks()
     {
         global $db;
 
-        $request = "SELECT * FROM works";
+        $request = "SELECT * FROM works WHERE cat='video'";
+        $resultat = $db->query($request);
+        $user = $resultat->fetchAll();
+
+        return($user);
+    }
+
+        function get_printworks()
+    {
+        global $db;
+
+        $request = "SELECT * FROM works WHERE cat='print'";
+        $resultat = $db->query($request);
+        $user = $resultat->fetchAll();
+
+        return($user);
+    }
+
+        function get_webworks()
+    {
+        global $db;
+
+        $request = "SELECT * FROM works WHERE cat='web'";
+        $resultat = $db->query($request);
+        $user = $resultat->fetchAll();
+
+        return($user);
+    }
+
+        function get_photoworks()
+    {
+        global $db;
+
+        $request = "SELECT * FROM works WHERE cat='photo'";
         $resultat = $db->query($request);
         $user = $resultat->fetchAll();
 

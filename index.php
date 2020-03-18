@@ -26,44 +26,30 @@ $work = new Works;
         ?></p>
 
     <br>
-    <?php
-        $allworks = $work->get_works();
-        foreach($allworks as $w)
-        {
-            echo($w["title"]);
-            echo("|");
-            echo($w["description"]);
-        }
-
-    ?> 
-
-
-
-
         <div class="index">        
-        <div class="titre">Hugo<br />Pichard</div>
-    <a href="login.php">
-        <div class="connexion">Connexion</div>
-    </a>
-    <a href="#">
-        <div class="videocouv"></div>
-        <div class="video">VIDEO</div>
-    </a>
-    <a href="#">
-        <div class="webcouv"></div>
-        <div class="web">WEB</div>
-    </a>        
-    <a href="#">
-        <div class="printcouv"></div>
-        <div class="print">PRINT</div>
-    </a>
-    <a href="#">
-        <div class="photocouv"></div>
-        <div class="photo">PHOTO</div>
-    </a>
-        <div class="soustitre">Etudiant en deuxième année d’un Dut Multimédia et Internet (MMI, anciennement SRC) à l’IUT Bordeaux Montaigne.</div>
-        <div data-layer="677ab2ee-2419-4154-9fb8-c35a54466ed1" class="downArrow"></div>
-</div>
+                <div class="titre">Hugo<br />Pichard</div>
+            <a href="login.php">
+                <div class="connexion">Connexion</div>
+            </a>
+            <a href="video.php">
+                <div class="videocouv"></div>
+                <div class="video">VIDEO</div>
+            </a>
+            <a href="web.php">
+                <div class="webcouv"></div>
+                <div class="web">WEB</div>
+            </a>        
+            <a href="print.php">
+                <div class="printcouv"></div>
+                <div class="print">PRINT</div>
+            </a>
+            <a href="photo.php">
+                <div class="photocouv"></div>
+                <div class="photo">PHOTO</div>
+            </a>
+                <div class="soustitre">Etudiant en deuxième année d’un Dut Multimédia et Internet (MMI, anciennement SRC) à l’IUT Bordeaux Montaigne.</div>
+                <div data-layer="677ab2ee-2419-4154-9fb8-c35a54466ed1" class="downArrow"></div>
+        </div>
 
 
     
