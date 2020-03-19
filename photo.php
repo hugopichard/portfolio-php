@@ -4,6 +4,9 @@ session_start();
 include_once("php/code.php");
 
 $work = new Works;
+
+$allworks = $work->get_photoworks();
+
 ?>
 <html lang="fr">
 <head>
@@ -15,17 +18,15 @@ $work = new Works;
         <div class="projets">
             <a href="index.php">
                 <div class="titre">Hugo<br />Pichard</div>
-            </a> 
-                <br>
-                <?php
-                    $allworks = $work->get_photoworks();
-                    foreach($allworks as $w)
-                    {
-                        echo($w["title"]);
-                        echo("|");
-                        echo($w["description"]);
-                    }
+            </a>  
 
+                <?php foreach($allworks as $w){?>
+
+                    <div class="photoproj"></div>
+                    <div class="titreproj"> <?php echo($w["title"]);?> </div>
+                    <div class="descproj"> <?php echo($w["description"]);?> </div>
+
+                <?php }
                 ?>
         </div>
 </html>

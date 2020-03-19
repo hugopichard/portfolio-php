@@ -4,7 +4,11 @@ session_start();
 include_once("php/code.php");
 
 $work = new Works;
+
+$allworks = $work->get_videoworks();
+
 ?>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -15,17 +19,16 @@ $work = new Works;
         <div class="projets">
             <a href="index.php">
                 <div class="titre">Hugo<br />Pichard</div>
-            </a> 
-                <br>
-                <?php
-                    $allworks = $work->get_videoworks();
-                    foreach($allworks as $w)
-                    {
-                        echo($w["title"]);
-                        echo("|");
-                        echo($w["description"]);
-                    }
+            </a>
 
+                <?php foreach($allworks as $w){?>
+
+                    <div class="photoproj"></div>
+                    <div class="titreproj"> <?php echo($w["title"]);?> </div>
+                    <div class="descproj"> <?php echo($w["description"]);?> </div>
+
+                <?php }
                 ?>
+
         </div>
 </html>

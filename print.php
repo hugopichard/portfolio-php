@@ -4,6 +4,10 @@ session_start();
 include_once("php/code.php");
 
 $work = new Works;
+
+$allworks = $work->get_printworks();
+
+
 ?>
 <html lang="fr">
 <head>
@@ -16,16 +20,14 @@ $work = new Works;
             <a href="index.php">
                 <div class="titre">Hugo<br />Pichard</div>
             </a> 
-                <br>
-                <?php
-                    $allworks = $work->get_printworks();
-                    foreach($allworks as $w)
-                    {
-                        echo($w["title"]);
-                        echo("|");
-                        echo($w["description"]);
-                    }
 
+                <?php foreach($allworks as $w){?>
+
+                    <div class="photoproj"></div>
+                    <div class="titreproj"> <?php echo($w["title"]);?> </div>
+                    <div class="descproj"> <?php echo($w["description"]);?> </div>
+
+                <?php }
                 ?>
         </div>
 </html>

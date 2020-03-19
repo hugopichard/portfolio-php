@@ -83,12 +83,12 @@ class Works {
         return($user);
     }
 
-    function create($title, $description)
+    function create($title = null, $description = null, $cat = null)
     {
         global $db;
 
-        $request = $db->prepare('INSERT INTO works (title, description) VALUES (?, ?)');
-        $request->execute([$title, $description]);
+        $request = $db->prepare('INSERT INTO works (title, description, cat) VALUES (?, ?, ?)');
+        $request->execute([$title, $description, $cat]);
     }
 
     function update($title, $description, $id)

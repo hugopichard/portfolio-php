@@ -14,17 +14,6 @@ $work = new Works;
     </head>
     <body>
 
-
-  <p>Bonjour <?php if(isset($_SESSION["account"]["username"]))
-    {
-        echo($_SESSION["account"]["username"]);
-    }
-    else
-    {
-        echo "NOT CONNECTED";
-    }
-        ?></p>
-
     <br>
         <div class="index">        
                 <div class="titre">Hugo<br />Pichard</div>
