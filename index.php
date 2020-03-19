@@ -5,6 +5,8 @@ include_once("php/code.php");
 
 $user = new Users;
 $work = new Works;
+
+$infos = $user->get_infos();
 ?>
     <html lang="fr">
     <head>
@@ -15,8 +17,11 @@ $work = new Works;
     <body>
 
     <br>
+
+     <?php foreach($infos as $w){?>
+
         <div class="index">        
-                <div class="titre">Hugo<br />Pichard</div>
+                <div class="titre"><?php echo($w["prenom"]);?><br /><?php echo($w["nom"]);?></div>
             <a href="login.php">
                 <div class="connexion">Connexion</div>
             </a>
@@ -36,8 +41,11 @@ $work = new Works;
                 <div class="photocouv"></div>
                 <div class="photo">PHOTO</div>
             </a>
-                <div class="soustitre">Etudiant en deuxième année d’un Dut Multimédia et Internet (MMI, anciennement SRC) à l’IUT Bordeaux Montaigne.</div>
+                <div class="soustitre"><?php echo($w["descriptionperso"]);?></div>
                 <div data-layer="677ab2ee-2419-4154-9fb8-c35a54466ed1" class="downArrow"></div>
+
+            <?php }
+            ?>
         </div>
 
 

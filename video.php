@@ -22,13 +22,15 @@ $allworks = $work->get_videoworks();
             </a>
 
                 <?php foreach($allworks as $w){?>
-
-                    <div class="photoproj"></div>
+                    
+                    
+                    <div class="photoproj"><?php $image = ($w["img"]); 
+                        echo '<img src=' . $image . '>';?> 
+                    </div>
                     <div class="titreproj"> <?php echo($w["title"]);?> </div>
                     <div class="descproj"> <?php echo($w["description"]);?> </div>
 
                 <?php }
                 ?>
-
         </div>
 </html>

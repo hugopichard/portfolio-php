@@ -36,9 +36,25 @@ class Users {
             echo("Impossible de se connecter");
         }
     }
+
+
+
+        function get_Infos()
+    {
+        global $db;
+
+        $request = "SELECT * FROM infos";
+        $resultat = $db->query($request);
+        $user = $resultat->fetchAll();
+    
+
+        return($user);
+    }
 }
 
 class Works {
+
+
     function get_videoworks()
     {
         global $db;
@@ -46,6 +62,7 @@ class Works {
         $request = "SELECT * FROM works WHERE cat='video'";
         $resultat = $db->query($request);
         $user = $resultat->fetchAll();
+    
 
         return($user);
     }
@@ -83,12 +100,12 @@ class Works {
         return($user);
     }
 
-    function create($title = null, $description = null, $cat = null)
+    function create($title = null, $description = null, $cat = null, $img = null)
     {
         global $db;
 
-        $request = $db->prepare('INSERT INTO works (title, description, cat) VALUES (?, ?, ?)');
-        $request->execute([$title, $description, $cat]);
+        $request = $db->prepare('INSERT INTO works (title, description, cat, img) VALUES (?, ?, ?, ?)');
+        $request->execute([$title, $description, $cat, $img]);
     }
 
     function update($title, $description, $id)

@@ -1,6 +1,6 @@
  <?php
 
-$DB_DSN = "mysql:dbname=php;host=localhost";
+$DB_DSN = "mysql:dbname=php;host=localhost;port=3306";
 $DB_USER = "php";
 $DB_PASSWORD = "phpmmi";
 

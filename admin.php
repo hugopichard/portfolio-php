@@ -6,7 +6,7 @@ include_once("php/code.php");
 
 $work = new Works;
 
-$add = $work->create();
+
 ?>
 
 
@@ -42,6 +42,8 @@ $add = $work->create();
                     <input type="text" placeholder="Titre" class="addtitre" name="titr" required>
                 <label for="desc"></label>
                     <input type="text" placeholder="Description" class="adddesc" name="desc" required>
+                <label for="img"></label>
+                    <input type="text" placeholder="Image link" class="addimg" name="img" required>
                     <button type="submit" name="submit" class="ajouter" value="ADD">Ajouter</button>
             </form>
 
@@ -49,11 +51,14 @@ $add = $work->create();
 
     <?php 
     if(isset($_POST['submit'])){
-        if($_POST['cat'] != NULL && $_POST['titr'] != NULL && $_POST['desc'] != NULL)
+        if($_POST['cat'] != NULL && $_POST['titr'] != NULL && $_POST['desc'] != NULL && $_POST['img'] != NULL)
         {
-            echo ($_POST['cat']);
-            echo ($_POST['titr']);
-            echo ($_POST['desc']);
+            $cat = ($_POST['cat']);
+            $title = ($_POST['titr']);
+            $description = ($_POST['desc']);
+            $img = ($_POST['img']);
+
+            $work->create($cat, $title, $description);
         }
     }   
     ?>
