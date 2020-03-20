@@ -50,10 +50,29 @@ class Users {
 
         return($user);
     }
+
+        function updateinfos($nom = "nom", $prenom = "prenom", $descriptionperso = "descriptionperso", $id = "1")
+    {
+        global $db;
+
+        $request = $db->prepare('UPDATE infos SET nom=?, prenom=?, descriptionperso=? WHERE id="1"');
+        $request->execute([$nom, $prenom, $descriptionperso]);
+    }
 }
 
 class Works {
 
+    function get_works()
+    {
+        global $db;
+
+        $request = "SELECT * FROM works";
+        $resultat = $db->query($request);
+        $user = $resultat->fetchAll();
+    
+
+        return($user);
+    }
 
     function get_videoworks()
     {
@@ -100,7 +119,7 @@ class Works {
         return($user);
     }
 
-    function create($title = null, $description = null, $cat = null, $img = null)
+    function create($title = "titre", $description = "dexcription", $cat = "photo", $img = "image")
     {
         global $db;
 
@@ -108,7 +127,7 @@ class Works {
         $request->execute([$title, $description, $cat, $img]);
     }
 
-    function update($title, $description, $id)
+    function update($title = "titre", $description = "dexcription", $cat = "photo", $img = "image", $id)
     {
         global $db;
 

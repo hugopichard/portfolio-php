@@ -7,6 +7,7 @@ $user = new Users;
 $work = new Works;
 
 $infos = $user->get_infos();
+
 ?>
     <html lang="fr">
     <head>

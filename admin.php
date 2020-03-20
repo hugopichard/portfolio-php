@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-
+ 
 
 <?php
 include_once("php/code.php");
 
 $work = new Works;
+$user = new Users;
+$infos = $user->get_infos();
+$allworks = $work->get_works();
 
 
 ?>
@@ -18,12 +21,16 @@ $work = new Works;
     </head>
 
     <body>
+
+        <?php foreach($infos as $w){?>
+
         <div class="admin">
 
             <a href="index.php">
-                <div class="titre"><br/></div>
+                <div class="titre"><?php echo($w["prenom"]);?><br/><?php echo($w["nom"]);?></div>
             </a> 
-
+        <?php }
+        ?>
             <a href="disconnect.php">
                 <div class="deco">Deconnection</div>
             </a>
@@ -58,10 +65,47 @@ $work = new Works;
             $description = ($_POST['desc']);
             $img = ($_POST['img']);
 
-            $work->create($cat, $title, $description);
+            $work->create($cat, $title, $description, $img);
         }
     }   
     ?>
 
+
+            <form method="post" action="admin.php">
+                <label for="nom"></label>
+                    <input type="text" placeholder="Nom" class="addnom" name="nom" required>
+                <label for="prenom"></label>
+                    <input type="text" placeholder="Prenom" class="addprenom" name="prenom" required>
+                <label for="description"></label>
+                    <input type="text" placeholder="Description" class="adddesc" name="description" required>
+                    <button type="submit" name="change" class="changer" value="change">Changer</button>
+            </form>
+
+            <?php 
+            if(isset($_POST['change'])){
+                if($_POST['nom'] != NULL && $_POST['prenom'] != NULL && $_POST['description'] != NULL)
+                {
+                    $nom = ($_POST['nom']);
+                    $prenom = ($_POST['prenom']);
+                    $descriptionperso = ($_POST['description']);
+
+                    $user->updateinfos($nom, $prenom, $descriptionperso);
+                }
+            }   
+            ?>            
+
+
+
+
+
+
+        <?php
+        $allworks = $work->get_works();
+        foreach($allworks as $w)
+        {?>
+           <div class="affichage"><?php echo($w["title"]);echo($w["description"]);echo($w["cat"]);echo($w["img"])?></div>
+        <?php  
+        }
+        ?>
     </body>
     </html>

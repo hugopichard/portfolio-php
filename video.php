@@ -3,8 +3,10 @@
 session_start();
 include_once("php/code.php");
 
+$user = new Users;
 $work = new Works;
 
+$infos = $user->get_infos();
 $allworks = $work->get_videoworks();
 
 ?>
@@ -17,10 +19,12 @@ $allworks = $work->get_videoworks();
 </head>
 <body>
         <div class="projets">
+        <?php foreach($infos as $w){?> 
             <a href="index.php">
-                <div class="titre">Hugo<br />Pichard</div>
-            </a>
-
+                <div class="titre"><?php echo($w["prenom"]);?><br /><br/><?php echo($w["nom"]);?></div>
+            </a>  
+        <?php }
+            ?>
                 <?php foreach($allworks as $w){?>
                     
                     
